@@ -8,16 +8,7 @@ namespace MinimalApi.EndPoints;
 internal static class ProductEndpoints
 {
     public static void MapProductEndpoints(this IEndpointRouteBuilder routes)
-    {
-        var products = new List<Product>
-{
-    new Product { Id = Guid.NewGuid(), Name = "Wireless Headphones", Description = "Noise-cancelling Bluetooth headphones with 20-hour battery life", Price = 79.99d },
-    new Product { Id = Guid.NewGuid(), Name = "Smart Watch", Description = "Fitness tracker with heart rate monitor and GPS", Price = 199.99d },
-    new Product { Id = Guid.NewGuid(), Name = "Laptop Backpack", Description = "Water-resistant backpack with USB charging port", Price = 34.99d },
-    new Product { Id = Guid.NewGuid(), Name = "Coffee Maker", Description = "Programmable 12-cup coffee maker with built-in grinder", Price = 89.99d },
-    new Product { Id = Guid.NewGuid(), Name = "Yoga Mat", Description = "Non-slip exercise mat with carrying strap", Price = 24.99d }
-};
-
+    {      
         var group = routes.MapGroup("/api/Product").WithTags(nameof(Product));
 
         group.MapGet("/", async (AppDbContext context) =>
@@ -53,14 +44,13 @@ internal static class ProductEndpoints
 
         group.MapPost("/", async (AppDbContext context,Product model) =>
         {
-            var p = products.FirstOrDefault(x => x.Id == model.Id);
+            var p = context.Products.FirstOrDefault(x => x.Id == model.Id);
 
             if (p is not null)
             {
                 return TypedResults.BadRequest("Product with the same ID already exists.");
             }
-            model.Id = Guid.NewGuid();
-            products.Add(model);
+            model.Id = Guid.NewGuid();            
             context.Products.Add(model);
             await context.SaveChangesAsync().ConfigureAwait(true);
 
