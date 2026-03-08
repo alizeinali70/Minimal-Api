@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+		<PackageReference Include="Scalar.AspNetCore" />
+		<ProjectReference Include="..\Minimal-Api-DataClasses\Minimal-Api-DataClasse.csproj" />
+		<ProjectReference Include="..\Minimal-Api-DbContext\Minimal-Api-DbContext.csproj" />
+	</ItemGroup>
+</Project>

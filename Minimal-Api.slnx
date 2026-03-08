@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="Minimal-Api-DataClasses/Minimal-Api-DataClasse.csproj" />
+  <Project Path="Minimal-Api-DbContext/Minimal-Api-DbContext.csproj" Id="e0db275d-f648-4644-8ba4-1ecf3b1fadfc" />
+  <Project Path="Minimal-Api/Minimal-Api.csproj" />
+</Solution>
